@@ -24,7 +24,6 @@ h2{
 nav li{
   display:inline;
   padding-right:20px;
-  text-decoration: none;
 }
 
 nav a{
@@ -44,7 +43,6 @@ nav a:focus{
   text-decoration: underline;
 }
 
-
 .skip a{
   background: white;
   left: 0;
@@ -56,15 +54,15 @@ nav a:focus{
 
 /*Your Code Here*/
 /*Write selector/rule property to position the skip class element*/
-  position: relative;
-  top: 40px;
+  position: absolute;
+  top: -40px;
 } 
 /*Your Code Here*/
 /*Write selector/rule property to style all elements when in focus*/
 
 .skip a:focus{
-  position: relative;
   border: 2px solid;
+  top: 0px;
 }
 
 nav{
@@ -82,8 +80,9 @@ footer{
 
 .container{
   /*Your Code Here*/
+  display: grid;
   grid-template-columns: 1fr 5fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto auto auto;
   grid-row-gap: 15px;
 }
 
@@ -96,14 +95,11 @@ header{
   height: 400px;                /* Parallax effect */
 
   /*Your Code Here*/
-  /*background-image: url("header.jpg");*/
- 
+  background-image: url("../images/header.jpg");
+  background-repeat: no-repeat;
+
   grid-column: 1 / -1;  /*Can you explain what this does?*/
   grid-row: 1 / auto;   /*Can you rewrite it?*/
-}
-
-header.parallex{
-  background-image: url("header.jpg");
 }
 
 header p{
@@ -113,51 +109,36 @@ header p{
   text-align: center;
 }
 
-.about{
+.about, .method, .clients, .contact{
   grid-column: 2 / span 1;
-  grid-row: 2 / span 1;
-} 
-
-.method{
-  grid-column: 2 / span 1;
-  grid-row: 3 / span 1;
-} 
-
-.clients{
-  grid-column: 2 / span 1;
-  grid-row: 4 / span 1;
-} 
-
-.contact{
-  grid-column: 2 / span 1;
-  grid-row: 5 / span 1;
+  grid-row: auto / span 1;
 }
 
 .about-image, .method-image, .clients-image, .contact-image{
   /*Your Code Here*/
-  grid-column: auto;
+  grid-column: 1 / -1;
   max-height: 700px;
   overflow: hidden;
 }
 
 .about, .about-image{
    /*Your Code Here*/
-   grid-row: 2 / span 1;
+   grid-row: 2 / auto;
 }
 
 .method, .method-image{
    /*Your Code Here*/
-  grid-row: 3 / span 1;
+    grid-row: 3 / auto;
 }
 
 .clients, .clients-image{
     /*Your Code Here*/
-  grid-row: 4 / span 1;
+    grid-row: 4 / auto;
 }
 
 .contact, .contact-image{
     /*Your Code Here*/
-    grid-row: 5 /span 1;  
+    grid-row: 5 / auto;  
 }
 
 .text-block{
@@ -165,30 +146,68 @@ header p{
   border: 10px solid black;
   padding: 30px;
   /*Your code here:*/
-  vertical-align: center;
+  text-align: center;
+  justify-self: center;
+  align-self: center;
 }
 
 @media all and (min-width: 800px){
   nav{
     padding: 30px 0px;
     /*Your code here:*/
-    vertical-align: center;
+    text-align: right;
   }
 
   .container{
     /*Your code here:*/
-    grid-column:  50px, auto, 500px, auto, 50px;
-    grid-row: 400px, 400px, 400px, 400px, 400px;
+    grid-template-columns:  50px auto 500px auto 50px;
+    grid-template-rows: 400px 400px 400px 400px 400px;
   }
 
-  .about, .clients, .method-image, .contact-image{
+  .about{
+    grid-column: 3 / span 2;
+    grid-row: 2 / auto;
+  }
+  
+  .clients{
+    grid-column: 3 / span 2;
+    grid-row: 4 / auto;
+  }
+  
+  .method-image{
+    grid-column: 3 / span 2;
+    grid-row: 3 / auto;
+    overflow: hidden;
+  } 
+  
+  .contact-image{
     /*Your code here:*/
     grid-column: 3 / span 2;
+    grid-row: 5 / auto;
+    overflow: hidden;
   }
 
-  .about-image, .clients-image, .method, .contact{
+  .about-image{
+    grid-column: 2 / span 2;
+    grid-row: 2 / auto;
+    overflow: hidden;
+  } 
+  
+  .clients-image{
+    grid-column: 2 / span 2;
+    grid-row: 4 / auto;
+    overflow: hidden;
+  } 
+  
+  .method{
+    grid-column: 2 / span 2;
+    grid-row: 3 / auto;
+  } 
+  
+  .contact{
     /*Your code here:*/
-    grid-column: 2 / span 3;
+    grid-column: 2 / span 2;
+    grid-row: 5 / auto;
   }
 }
 
